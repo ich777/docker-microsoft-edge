@@ -5,7 +5,7 @@ LABEL org.opencontainers.image.source="https://github.com/ich777/docker-microsof
 
 RUN export TZ=Europe/Rome && \
 	apt-get update && \
-	apt-get -y install --no-install-recommends fonts-takao fonts-arphic-uming libgtk-3-0 && \
+	apt-get -y install --no-install-recommends fonts-takao fonts-arphic-uming fonts-liberation libasound2 libcurl4 libgbm1 libnss3 libu2f-udev xdg-utils binutils xz-utils && \
 	ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
 	echo $TZ > /etc/timezone && \
 	echo "ko_KR.UTF-8 UTF-8" >> /etc/locale.gen && \ 
@@ -16,6 +16,7 @@ RUN export TZ=Europe/Rome && \
 	rm /usr/share/novnc/app/images/icons/*
 
 ENV DATA_DIR=/ms-edge
+ENV MS_EDGE_V="latest"
 ENV CUSTOM_RES_W=1024
 ENV CUSTOM_RES_H=768
 ENV CUSTOM_DEPTH=16
