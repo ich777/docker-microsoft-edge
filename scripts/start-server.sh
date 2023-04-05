@@ -45,4 +45,8 @@ sleep infinity
 
 echo "---Starting Microsoft Edge---"
 cd ${DATA_DIR}/bin
-${DATA_DIR}/bin/microsoft-edge --user-data-dir=${DATA_DIR}/profile --disable-accelerated-video --disable-gpu --no-sandbox --test-type 2>/dev/null
+if [ "${DEBUG}" != "true" ]; then
+  ${DATA_DIR}/bin/microsoft-edge --user-data-dir=${DATA_DIR}/profile --disable-accelerated-video --disable-gpu --no-sandbox --test-type 2>/dev/null
+else
+  ${DATA_DIR}/bin/microsoft-edge --user-data-dir=${DATA_DIR}/profile --disable-accelerated-video --disable-gpu --no-sandbox --test-type
+fi
