@@ -44,4 +44,5 @@ sleep 2
 sleep infinity
 
 echo "---Starting Microsoft Edge---"
-cd ${DATA_DIR}
+cd ${DATA_DIR}/bin
+${DATA_DIR}/bin/microsoft-edge --user-data-dir=${DATA_DIR}/profile --disable-accelerated-video --disable-gpu --no-sandbox --test-type 2>/dev/null
