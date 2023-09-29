@@ -4,7 +4,7 @@ export XAUTHORITY=${DATA_DIR}/.Xauthority
 
 CUR_V="$(${DATA_DIR}/bin/microsoft-edge --version 2>/dev/null | cut -d ' ' -f3)"
 if [ "${MS_EDGE_V}" == "latest" ]; then
-  LAT_V="$(wget -qO- https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/ | grep -oP '(?<=href=").*?(?=">)' | awk -F'>' '{print $1}' | grep '^[a-zA-Z]' | sort -V | tail -1)"
+  LAT_V="$(wget -qO- https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/ | grep -oP '(?<=href=").*?(?=">)' | awk -F'>' '{print $1}' | grep '^[a-zA-Z]' | sort -V | tail -1 | cut -d '_' -f2 | cut -d '-' -f1)"
   if [ -z "${LAT_V}" ]; then
     if [ -z "${CUR_V}" ]; then
       echo "Something went horribly wrong with version detection!"
